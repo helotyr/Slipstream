@@ -1,6 +1,10 @@
 package org.firstinspires.ftc.teamcode;
 import com.pedropathing.follower.Follower;
 
+/**
+ * Created by Sahaj Patel - 23345 Sterling Stormers
+ */
+
 public class VelocityController {
     private final Follower follower;
     private final AMPC ampc;
@@ -80,3 +84,4 @@ public class VelocityController {
         lastTimeNs = 0;
     }
 }
+
