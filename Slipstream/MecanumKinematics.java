@@ -3,7 +3,8 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 /**
- * Created by Sahaj Patel - 23345 Sterling Stormers
+ * @author Sahaj Patel - 23345 Sterling Stormers
+ * @version 1.0, 7/17/2026
  */
 
 public class MecanumKinematics {
