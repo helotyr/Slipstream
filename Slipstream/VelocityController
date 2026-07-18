@@ -2,7 +2,8 @@ package org.firstinspires.ftc.teamcode;
 import com.pedropathing.follower.Follower;
 
 /**
- * Created by Sahaj Patel - 23345 Sterling Stormers
+ * @author Sahaj Patel - 23345 Sterling Stormers
+ * @version 2.0, 7/17/2026
  */
 
 public class VelocityController {
