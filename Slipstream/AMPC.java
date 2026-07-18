@@ -5,6 +5,10 @@ import com.pedropathing.paths.PathChain;
 import com.pedropathing.geometry.Pose;
 import com.pedropathing.math.Vector;
 
+/** 
+ * Created by Sahaj Patel - 23345 Sterling Stormers 
+ */
+
 @Configurable   //remove before release
 public class AMPC {  // Version 1.4.0
     private final Follower follower;
