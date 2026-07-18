@@ -2,6 +2,10 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
+/**
+ * Created by Sahaj Patel - 23345 Sterling Stormers
+ */
+
 public class MecanumKinematics {
     private final DcMotor frontLeftDrive;
     private final DcMotor frontRightDrive;
