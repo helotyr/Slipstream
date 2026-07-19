@@ -15,6 +15,11 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import java.util.List;
 
+/**
+ * @author Sahaj Patel - 23345 Sterling Stormers
+ * @version 1.0, 7/19/2026
+ */
+
 @Configurable
 @TeleOp(name = "Slipstream Tuning", group = "Slipstream")
 public class SlipstreamTuning extends SelectableOpMode {
@@ -77,6 +82,11 @@ public class SlipstreamTuning extends SelectableOpMode {
     }
 }
 
+/**
+ * @author Sahaj Patel - 23345 Sterling Stormers
+ * @version 1.0, 7/19/2026
+ */
+
 class MaxSpeedForwardTest extends OpMode {
     public static double TARGET_DISTANCE = 48;
     public static int SAMPLE_WINDOW = 10;
@@ -136,6 +146,11 @@ class MaxSpeedForwardTest extends OpMode {
     }
 }
 
+/**
+ * @author Sahaj Patel - 23345 Sterling Stormers
+ * @version 1.0, 7/19/2026
+ */
+
 class MaxSpeedStrafeTest extends OpMode {
     public static double TARGET_DISTANCE = 48;
     public static int SAMPLE_WINDOW = 10;
@@ -194,6 +209,11 @@ class MaxSpeedStrafeTest extends OpMode {
         }
     }
 }
+
+/**
+ * @author Sahaj Patel - 23345 Sterling Stormers
+ * @version 1.0, 7/19/2026
+ */
 
 class MaxTurnRateTest extends OpMode {
     public static double TARGET_ROTATIONS = 3.0;
@@ -255,6 +275,11 @@ class MaxTurnRateTest extends OpMode {
         }
     }
 }
+
+/**
+ * @author Sahaj Patel - 23345 Sterling Stormers
+ * @version 1.0, 7/19/2026
+ */
 
 class MaxDecelTest extends OpMode {
     public static double ACCEL_TIME_SECONDS = 1.5;
@@ -407,8 +432,14 @@ class MaxDecelTest extends OpMode {
 /**
  * Alternates between +TARGET and -TARGET forward velocity every SWITCH_INTERVAL seconds.
  * Runs inline Vx PIDF reading LIVE from SlipstreamConstants.
- * User adjusts vxKp, vxKi, vxKd, vxKf in Panels while watching Error graph.
+ * User adjusts vxKp, vxKi, vxKd, vxKf in Panels while watching Error.
  */
+
+/**
+ * @author Sahaj Patel - 23345 Sterling Stormers
+ * @version 1.0, 7/19/2026
+ */
+
 class VxPIDFTuner extends OpMode {
     public static double TARGET_VELOCITY = 25;
     public static double SWITCH_INTERVAL_SECONDS = 1.5;
@@ -492,8 +523,14 @@ class VxPIDFTuner extends OpMode {
 /**
  * Alternates between +TARGET and -TARGET strafe velocity every SWITCH_INTERVAL seconds.
  * Runs inline Vy PIDF reading LIVE from SlipstreamConstants.
- * User adjusts vyKp, vyKi, vyKd, vyKf in Panels while watching Error graph.
+ * User adjusts vyKp, vyKi, vyKd, vyKf in Panels while watching Error.
  */
+
+/**
+ * @author Sahaj Patel - 23345 Sterling Stormers
+ * @version 1.0, 7/19/2026
+ */
+
 class VyPIDFTuner extends OpMode {
     public static double TARGET_VELOCITY = 20;
     public static double SWITCH_INTERVAL_SECONDS = 1.5;
@@ -577,6 +614,12 @@ class VyPIDFTuner extends OpMode {
  * Runs inline Omega PIDF reading LIVE from SlipstreamConstants.
  * User adjusts omegaKp, omegaKi, omegaKd, omegaKf in Panels while watching Error graph.
  */
+
+/**
+ * @author Sahaj Patel - 23345 Sterling Stormers
+ * @version 1.0, 7/19/2026
+ */
+
 class OmegaPIDFTuner extends OpMode {
     public static double TARGET_OMEGA = 2.0;
     public static double SWITCH_INTERVAL_SECONDS = 1.5;
