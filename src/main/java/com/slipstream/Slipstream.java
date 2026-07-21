@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode;
+package com.slipstream;
 import com.pedropathing.follower.Follower;
 import com.pedropathing.paths.PathChain;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -10,15 +10,14 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class Slipstream {
     public Follower follower;
-    
     public AMPC ampc;
-    public VelocityControllerV2 controller;
+    public VelocityController controller;
     public MecanumKinematics kinematics;
 
     public Slipstream(Follower follower, HardwareMap hardwareMap) {
         this.follower = follower;
         ampc = new AMPC(follower);
-        controller = new VelocityControllerV2(follower, ampc);
+        controller = new VelocityController(follower, ampc);
         kinematics = new MecanumKinematics(hardwareMap, ampc, controller);
     }
 

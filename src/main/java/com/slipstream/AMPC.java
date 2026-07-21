@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode;
+package com.slipstream;
 import com.bylazar.configurables.annotations.Configurable;
 import com.pedropathing.follower.Follower;
 import com.pedropathing.paths.PathChain;

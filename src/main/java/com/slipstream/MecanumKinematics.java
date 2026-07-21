@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode;
+package com.slipstream;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
@@ -13,9 +13,9 @@ public class MecanumKinematics {
     private final DcMotor backLeftDrive;
     private final DcMotor backRightDrive;
     private final AMPC ampc;
-    private final VelocityControllerV2 controller;
+    private final VelocityController controller;
 
-    public MecanumKinematics(HardwareMap hardwareMap, AMPC ampc, VelocityControllerV2 controller) {
+    public MecanumKinematics(HardwareMap hardwareMap, AMPC ampc, VelocityController controller) {
         this.ampc = ampc;
         this.controller = controller;
 
