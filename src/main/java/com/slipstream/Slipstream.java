@@ -10,6 +10,7 @@ public class Slipstream {
     public VelocityController controller;
     public MecanumKinematics kinematics;
     public SlipstreamConfig config;
+    public boolean useSlipstream = true;
 
     public Slipstream(Follower follower, HardwareMap hardwareMap, SlipstreamConfig config) {
         this.follower = follower;
@@ -20,19 +21,20 @@ public class Slipstream {
     }
 
     public void update() {
-        follower.updatePose();
-
-        PathChain currentChain = follower.getCurrentPathChain();
-        if (currentChain != null && currentChain != ampc.getActivePath()) {
-            ampc.setActivePath(currentChain);
-        }
-
-        ampc.update();
-        controller.velocity();
-        kinematics.drive();
-
-        if (ampc.isPathComplete() && follower.isBusy()) {
-            follower.breakFollowing();
+        if (useSlipstream) {
+            follower.updatePose();
+            PathChain currentChain = follower.getCurrentPathChain();
+            if (currentChain != null && currentChain != ampc.getActivePath()) {
+                ampc.setActivePath(currentChain);
+            }
+            ampc.update();
+            controller.velocity();
+            kinematics.drive();
+            if (ampc.isPathComplete() && follower.isBusy()) {
+                follower.breakFollowing();
+            }
+        } else {
+            follower.update();
         }
     }
 }
