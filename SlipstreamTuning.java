@@ -4,7 +4,7 @@ import static org.firstinspires.ftc.teamcode.SlipstreamTuning.panel;
 import static org.firstinspires.ftc.teamcode.SlipstreamTuning.setPowers;
 import static org.firstinspires.ftc.teamcode.SlipstreamTuning.stopMotors;
 import static org.firstinspires.ftc.teamcode.SlipstreamTuning.motors;
-import com.slipstream.SlipstreamConstants;
+public static SlipstreamConstants constants;
 import com.bylazar.configurables.annotations.Configurable;
 import com.bylazar.configurables.annotations.IgnoreConfigurable;
 import com.bylazar.telemetry.PanelsTelemetry;
@@ -50,19 +50,20 @@ public class SlipstreamTuning extends SelectableOpMode {
     @Override
     public void onSelect() {
         follower = Constants.createFollower(hardwareMap);
+        constants = new SlipstreamConstants();
         follower.setStartingPose(new Pose(0, 0, 0));
 
         motors = new DcMotor[]{
-                hardwareMap.get(DcMotor.class, SlipstreamConstants.leftFrontMotorName),
-                hardwareMap.get(DcMotor.class, SlipstreamConstants.rightFrontMotorName),
-                hardwareMap.get(DcMotor.class, SlipstreamConstants.leftBackMotorName),
-                hardwareMap.get(DcMotor.class, SlipstreamConstants.rightBackMotorName)
+                hardwareMap.get(DcMotor.class, constants.leftFrontMotorName),
+                hardwareMap.get(DcMotor.class, constants.rightFrontMotorName),
+                hardwareMap.get(DcMotor.class, constants.leftBackMotorName),
+                hardwareMap.get(DcMotor.class, constants.rightBackMotorName)
         };
 
-        motors[0].setDirection(SlipstreamConstants.leftFrontDirection);
-        motors[1].setDirection(SlipstreamConstants.rightFrontDirection);
-        motors[2].setDirection(SlipstreamConstants.leftBackDirection);
-        motors[3].setDirection(SlipstreamConstants.rightBackDirection);
+        motors[0].setDirection(constants.leftFrontDirection);
+        motors[1].setDirection(constants.rightFrontDirection);
+        motors[2].setDirection(constants.leftBackDirection);
+        motors[3].setDirection(constants.rightBackDirection);
 
         for (DcMotor m : motors) m.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
 
@@ -508,9 +509,9 @@ class VxPIDFTuner extends OpMode {
         double derivative = (error - lastError) / dt;
         lastError = error;
 
-        double effort = SlipstreamConstants.vxKf * desired + SlipstreamConstants.vxKp * error + SlipstreamConstants.vxKi * integral + SlipstreamConstants.vxKd * derivative;
+        double effort = constants.vxKf * desired + constants.vxKp * error + constants.vxKi * integral + constants.vxKd * derivative;
 
-        double norm = effort / SlipstreamConstants.maxSpeedForward;
+        double norm = effort / constants.maxSpeedForward;
         norm = Math.max(-1.0, Math.min(1.0, norm));
         setPowers(norm, norm, norm, norm);
 
@@ -597,9 +598,9 @@ class VyPIDFTuner extends OpMode {
         double derivative = (error - lastError) / dt;
         lastError = error;
 
-        double effort = SlipstreamConstants.vyKf * desired + SlipstreamConstants.vyKp * error + SlipstreamConstants.vyKi * integral + SlipstreamConstants.vyKd * derivative;
+        double effort = constants.vyKf * desired + constants.vyKp * error + constants.vyKi * integral + constants.vyKd * derivative;
 
-        double norm = effort / SlipstreamConstants.maxSpeedStrafe;
+        double norm = effort / constants.maxSpeedStrafe;
         norm = Math.max(-1.0, Math.min(1.0, norm));
         setPowers(norm, -norm, -norm, norm);
 
@@ -683,9 +684,9 @@ class OmegaPIDFTuner extends OpMode {
         double derivative = (error - lastError) / dt;
         lastError = error;
 
-        double effort = SlipstreamConstants.omegaKf * desired + SlipstreamConstants.omegaKp * error + SlipstreamConstants.omegaKi * integral + SlipstreamConstants.omegaKd * derivative;
+        double effort = constants.omegaKf * desired + constants.omegaKp * error + constants.omegaKi * integral + constants.omegaKd * derivative;
 
-        double norm = effort / SlipstreamConstants.maxTurnRate;
+        double norm = effort / constantsonselect.maxTurnRate;
         norm = Math.max(-1.0, Math.min(1.0, norm));
         setPowers(-norm, norm, -norm, norm);
 
