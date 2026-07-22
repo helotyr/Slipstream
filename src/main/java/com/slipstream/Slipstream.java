@@ -1,30 +1,27 @@
 package com.slipstream;
+
 import com.pedropathing.follower.Follower;
 import com.pedropathing.paths.PathChain;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-
-/**
- * @author Sahaj Patel - 23345 Sterling Stormers
- * @version 1.0, 7/20/2026
- */
 
 public class Slipstream {
     public Follower follower;
     public AMPC ampc;
     public VelocityController controller;
     public MecanumKinematics kinematics;
+    public SlipstreamConfig config;
 
-    public Slipstream(Follower follower, HardwareMap hardwareMap) {
+    public Slipstream(Follower follower, HardwareMap hardwareMap, SlipstreamConfig config) {
         this.follower = follower;
-        ampc = new AMPC(follower);
-        controller = new VelocityController(follower, ampc);
-        kinematics = new MecanumKinematics(hardwareMap, ampc, controller);
+        this.config = config;
+        ampc = new AMPC(follower, config);
+        controller = new VelocityController(follower, ampc, config);
+        kinematics = new MecanumKinematics(hardwareMap, ampc, controller, config);
     }
 
     public void update() {
         follower.updatePose();
 
-        // Sync AMPC with whatever path the user told Pedro to follow
         PathChain currentChain = follower.getCurrentPathChain();
         if (currentChain != null && currentChain != ampc.getActivePath()) {
             ampc.setActivePath(currentChain);
@@ -34,7 +31,6 @@ public class Slipstream {
         controller.velocity();
         kinematics.drive();
 
-        // When AMPC finishes, tell Pedro so !follower.isBusy() works
         if (ampc.isPathComplete() && follower.isBusy()) {
             follower.breakFollowing();
         }

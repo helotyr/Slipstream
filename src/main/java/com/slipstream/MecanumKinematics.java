@@ -1,13 +1,9 @@
 package com.slipstream;
+
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-/**
- * @author Sahaj Patel - 23345 Sterling Stormers
- * @version 1.0, 7/17/2026
- */
-
-public class MecanumKinematics {
+class MecanumKinematics {
     private final DcMotor frontLeftDrive;
     private final DcMotor frontRightDrive;
     private final DcMotor backLeftDrive;
@@ -15,19 +11,19 @@ public class MecanumKinematics {
     private final AMPC ampc;
     private final VelocityController controller;
 
-    public MecanumKinematics(HardwareMap hardwareMap, AMPC ampc, VelocityController controller) {
+    public MecanumKinematics(HardwareMap hardwareMap, AMPC ampc, VelocityController controller, SlipstreamConfig config) {
         this.ampc = ampc;
         this.controller = controller;
 
-        frontLeftDrive = hardwareMap.get(DcMotor.class, SlipstreamConstants.leftFrontMotorName);
-        frontRightDrive = hardwareMap.get(DcMotor.class, SlipstreamConstants.rightFrontMotorName);
-        backLeftDrive = hardwareMap.get(DcMotor.class, SlipstreamConstants.leftBackMotorName);
-        backRightDrive = hardwareMap.get(DcMotor.class, SlipstreamConstants.rightBackMotorName);
+        frontLeftDrive = hardwareMap.get(DcMotor.class, config.leftFrontMotorName);
+        frontRightDrive = hardwareMap.get(DcMotor.class, config.rightFrontMotorName);
+        backLeftDrive = hardwareMap.get(DcMotor.class, config.leftBackMotorName);
+        backRightDrive = hardwareMap.get(DcMotor.class, config.rightBackMotorName);
 
-        frontLeftDrive.setDirection(SlipstreamConstants.leftFrontDirection);
-        frontRightDrive.setDirection(SlipstreamConstants.rightFrontDirection);
-        backLeftDrive.setDirection(SlipstreamConstants.leftBackDirection);
-        backRightDrive.setDirection(SlipstreamConstants.rightBackDirection);
+        frontLeftDrive.setDirection(config.leftFrontDirection);
+        frontRightDrive.setDirection(config.rightFrontDirection);
+        backLeftDrive.setDirection(config.leftBackDirection);
+        backRightDrive.setDirection(config.rightBackDirection);
 
         frontLeftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
         frontRightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);

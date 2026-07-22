@@ -1,14 +1,11 @@
 package com.slipstream;
+
 import com.pedropathing.follower.Follower;
 
-/**
- * @author Sahaj Patel - 23345 Sterling Stormers
- * @version 2.0, 7/17/2026
- */
-
-public class VelocityController {
+class VelocityController {
     private final Follower follower;
     private final AMPC ampc;
+    private final SlipstreamConfig config;
     private double integralVx = 0, lastErrorVx = 0;
     private double integralVy = 0, lastErrorVy = 0;
     private double integralOmega = 0, lastErrorOmega = 0;
@@ -24,9 +21,10 @@ public class VelocityController {
     public double effortVy;
     public double effortOmega;
 
-    public VelocityController(Follower follower, AMPC ampc) {
+    public VelocityController(Follower follower, AMPC ampc, SlipstreamConfig config) {
         this.follower = follower;
         this.ampc = ampc;
+        this.config = config;
     }
 
     public void velocity() {
@@ -56,7 +54,7 @@ public class VelocityController {
         integralVx += errorVx * dt;
         double derivativeVx = (errorVx - lastErrorVx) / dt;
         lastErrorVx = errorVx;
-        return SlipstreamConstants.vxKf * desiredVx + SlipstreamConstants.vxKp * errorVx + SlipstreamConstants.vxKi * integralVx + SlipstreamConstants.vxKd * derivativeVx;
+        return config.vxKf * desiredVx + config.vxKp * errorVx + config.vxKi * integralVx + config.vxKd * derivativeVx;
     }
 
     private double pidfComputeVy() {
@@ -64,7 +62,7 @@ public class VelocityController {
         integralVy += errorVy * dt;
         double derivativeVy = (errorVy - lastErrorVy) / dt;
         lastErrorVy = errorVy;
-        return SlipstreamConstants.vyKf * desiredVy + SlipstreamConstants.vyKp * errorVy + SlipstreamConstants.vyKi * integralVy + SlipstreamConstants.vyKd * derivativeVy;
+        return config.vyKf * desiredVy + config.vyKp * errorVy + config.vyKi * integralVy + config.vyKd * derivativeVy;
     }
 
     private double pidfComputeOmega() {
@@ -72,7 +70,7 @@ public class VelocityController {
         integralOmega += errorOmega * dt;
         double derivativeOmega = (errorOmega - lastErrorOmega) / dt;
         lastErrorOmega = errorOmega;
-        return SlipstreamConstants.omegaKf * desiredOmega + SlipstreamConstants.omegaKp * errorOmega + SlipstreamConstants.omegaKi * integralOmega + SlipstreamConstants.omegaKd * derivativeOmega;
+        return config.omegaKf * desiredOmega + config.omegaKp * errorOmega + config.omegaKi * integralOmega + config.omegaKd * derivativeOmega;
     }
 
     public void reset() {
@@ -85,4 +83,3 @@ public class VelocityController {
         lastTimeNs = 0;
     }
 }
-

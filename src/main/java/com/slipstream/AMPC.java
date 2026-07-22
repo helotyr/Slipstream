@@ -11,8 +11,9 @@ import com.pedropathing.math.Vector;
  */
 
 @Configurable   //remove before release
-public class AMPC {  // Version 1.4.0
+class AMPC {  // Version 1.4.0
     private final Follower follower;
+    private final SlipstreamConfig config;
     private final double baseMaxSpeedForward;
     private final double baseMaxSpeedStrafe;
     private final double baseMaxTurnRate;
@@ -69,11 +70,12 @@ public class AMPC {  // Version 1.4.0
     public double filteredRatioVy = 1.0;
     public double filteredRatioOmega = 1.0;
 
-    public AMPC(Follower follower) {
+    public AMPC(Follower follower, SlipstreamConfig config) {
+        this.config = config;
         this.follower = follower;
-        this.baseMaxSpeedForward = SlipstreamConstants.maxSpeedForward;
-        this.baseMaxSpeedStrafe = SlipstreamConstants.maxSpeedStrafe;
-        this.baseMaxTurnRate = SlipstreamConstants.maxTurnRate;
+        this.baseMaxSpeedForward = config.maxSpeedForward;
+        this.baseMaxSpeedStrafe = config.maxSpeedStrafe;
+        this.baseMaxTurnRate = config.maxTurnRate;
         this.maxSpeedForward = baseMaxSpeedForward;
         this.maxSpeedStrafe = baseMaxSpeedStrafe;
         this.maxTurnRateRad = baseMaxTurnRate;
@@ -257,7 +259,7 @@ public class AMPC {  // Version 1.4.0
 
         double speed = Math.sqrt((vx * vx) + (vy * vy));
         double tAdvancePerStep = (speed * STEP_DT) / pathLengthInches;
-        double brakeDist = (speed * speed) / (2.0 * SlipstreamConstants.maxDecel);
+        double brakeDist = (speed * speed) / (2.0 * config.maxDecel);
 
         double totalCost = 0;
         terminalTriggered = false;
