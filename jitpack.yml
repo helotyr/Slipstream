@@ -1,3 +1,6 @@
+before_install:
+  - export ANDROID_HOME=/opt/android-sdk-linux
+  - echo "sdk.dir=$ANDROID_HOME" > local.properties
 jdk:
   - openjdk17
 install:
