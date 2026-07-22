@@ -2,6 +2,11 @@ package com.slipstream;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.bylazar.configurables.annotations.Configurable;
 
+/**
+ * @author Sahaj Patel - 23345 Sterling Stormers
+ * @version 1.0, 7/21/2026
+ */
+
 @Configurable
 public class SlipstreamConfig {
     public String leftFrontMotorName = "name";

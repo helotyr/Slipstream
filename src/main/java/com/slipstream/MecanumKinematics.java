@@ -1,7 +1,11 @@
 package com.slipstream;
-
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+
+/**
+ * @author Sahaj Patel - 23345 Sterling Stormers
+ * @version 1.0, 7/17/2026
+ */
 
 class MecanumKinematics {
     private final DcMotor frontLeftDrive;

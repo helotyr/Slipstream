@@ -1,6 +1,10 @@
 package com.slipstream;
-
 import com.pedropathing.follower.Follower;
+
+/**
+ * @author Sahaj Patel - 23345 Sterling Stormers
+ * @version 1.0, 7/17/2026
+ */
 
 class VelocityController {
     private final Follower follower;
