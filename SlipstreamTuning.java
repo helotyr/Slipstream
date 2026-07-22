@@ -4,7 +4,6 @@ import static org.firstinspires.ftc.teamcode.SlipstreamTuning.panel;
 import static org.firstinspires.ftc.teamcode.SlipstreamTuning.setPowers;
 import static org.firstinspires.ftc.teamcode.SlipstreamTuning.stopMotors;
 import static org.firstinspires.ftc.teamcode.SlipstreamTuning.motors;
-public static SlipstreamConstants constants;
 import com.bylazar.configurables.annotations.Configurable;
 import com.bylazar.configurables.annotations.IgnoreConfigurable;
 import com.bylazar.telemetry.PanelsTelemetry;
@@ -25,9 +24,9 @@ import java.util.List;
 @Configurable
 @TeleOp(name = "Slipstream Tuning", group = "Slipstream")
 public class SlipstreamTuning extends SelectableOpMode {
-
     public static Follower follower;
     public static DcMotor[] motors;
+    public static SlipstreamConstants constants;
     @IgnoreConfigurable
     public static TelemetryManager panel;
 
